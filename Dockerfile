@@ -1,5 +1,5 @@
 # Используем официальный образ Playwright с предустановленными браузерами
-FROM mcr.microsoft.com/playwright:v1.40.0-focal
+FROM mcr.microsoft.com/playwright:v1.58.2-focal
 
 WORKDIR /app
 
