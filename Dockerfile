@@ -2,25 +2,18 @@ FROM mcr.microsoft.com/playwright:v1.58.2-jammy
 
 WORKDIR /app
 
-# Указываем путь к уже установленным в образе браузерам
-ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
-
+# Копируем файлы зависимостей
 COPY package*.json ./
-RUN npm install
 
-COPY . .
-
-EXPOSE 8080
-CMD ["node", "server.js"]FROM mcr.microsoft.com/playwright:v1.58.2-jammy
-
-WORKDIR /app
-
-COPY package*.json ./
+# Устанавливаем npm-пакеты и сразу после установки доустанавливаем браузеры
 RUN npm install && \
-    # Явно устанавливаем браузеры в стандартную папку Playwright
     npx playwright install chromium
 
+# Копируем остальной код
 COPY . .
+
+# Убеждаемся, что путь к браузерам не переопределён (можно закомментировать или удалить)
+# ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
 EXPOSE 8080
 CMD ["node", "server.js"]
