@@ -19,7 +19,7 @@ app.get('/search', async (req, res) => {
   const page = await context.newPage();
 
   try {
-    await page.goto('https://e-disclosure.ru/poisk-po-soobshheniyam', { waitUntil: 'networkidle' });
+    await page.goto('https://e-disclosure.ru/poisk-po-soobshheniyam', { waitUntil: 'domcontentloaded', timeout: 60000 });
     console.log('Страница поиска загружена');
 
     // Диагностика
