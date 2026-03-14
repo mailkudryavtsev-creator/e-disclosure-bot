@@ -15,5 +15,5 @@ COPY . .
 # Убеждаемся, что путь к браузерам не переопределён (можно закомментировать или удалить)
 # ENV PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
 
-EXPOSE 8080
+EXPOSE 3000
 CMD ["node", "server.js"]
