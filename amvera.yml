@@ -1,0 +1,12 @@
+meta:
+  environment: node
+  toolchain:
+    name: npm
+    version: 20
+build:
+  commands:
+    - npm install
+    - npx playwright install chromium --with-deps
+run:
+  command: node server.js
+  containerPort: 8080
